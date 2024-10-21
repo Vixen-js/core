@@ -1,0 +1,67 @@
+{
+  "name": "@vixen-js/core",
+  "version": "0.1.0",
+  "description": "Super Fast Desktop Framework for Nodejs",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "dev": "pnpm build && pnpm quode dist/demo.js",
+    "demo": "quode dist/demo.js",
+    "build": "tsc && pnpm build:addon",
+    "install": "pnpm setup-qt && (node ./scripts/skip.js || pnpm setup-bin || pnpm build:addon)",
+    "setup-qt": "node ./scripts/setupQt.js",
+    "setup-bin": "node ./scripts/setupBin.js",
+    "build:addon": "cross-env CMAKE_BUILD_PARALLEL_LEVEL=3 cmake-js compile",
+    "test": "quode ./node_modules/jest/bin/jest.js -i",
+    "lint:cpp": "clang-format -i --glob=src/cpp/**/*.[h,c]*",
+    "lint:ts": "tsc --noEmit && eslint ./src --fix",
+    "prepublishOnly": "pnpm build",
+    "quode": "node ./scripts/qode.js"
+  },
+  "keywords": [
+    "Native Apps",
+    "Desktop",
+    "Framework",
+    "VixenJS",
+    "gui",
+    "qt",
+    "css"
+  ],
+  "engines": {
+    "node": ">=18.19.x"
+  },
+  "engineStrict": true,
+  "author": "Seobryn <ing.jose.joya@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/bindings": "^1.5.5",
+    "@types/jest": "^29.5.13",
+    "@types/node": "^22.7.6",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@nodegui/qode": "^18.12.1",
+    "@paralleldrive/cuid2": "^2.2.2",
+    "@vixen-js/pkg-installer": "^0.2.1",
+    "@vixen-js/postqcss-autoprefixer": "^0.2.0",
+    "bindings": "^1.5.0",
+    "cmake-js": "^7.3.0",
+    "cross-env": "^7.0.3",
+    "manage-path": "^2.0.0",
+    "memoize-one": "^6.0.0",
+    "node-addon-api": "^8.2.1",
+    "postcss": "^8.4.47",
+    "tar": "^7.4.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vixen-js/core.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vixen-js/core/issues"
+  },
+  "homepage": "https://github.com/vixen-js/core#readme",
+  "publishConfig": {
+    "access": "public"
+  }
+}

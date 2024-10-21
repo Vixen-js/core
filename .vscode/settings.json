@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.jsx": "javascriptreact",
+        "*.ejs": "html",
+        "qapplication": "cpp",
+        "initializer_list": "cpp",
+        "new": "cpp"
+    },
+    "C_Cpp.intelliSenseCacheSize": 0,
+}

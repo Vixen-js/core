@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 
 const SETUP_DIR = path.resolve(__dirname, "..", "qt-mini");
-const QT_VERSION = "6.7.2";
+const QT_VERSION = "6.6.0";
 const MIRROR_URL = Boolean(process.env.QT_MIRROR)
   ? process.env.QT_LINK_MIRROR
   : "https://download.qt.io";

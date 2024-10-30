@@ -5,8 +5,8 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/src/cpp/**",
-                "/opt/homebrew/Cellar/qt/6.7.2_1/include/**",
                 "node_modules/node-addon-api/",
+                "${workspaceFolder}/qt-mini/6.6.0/macos/include/",
                 // Nodejs Include directory 
                 "~/.volta/tools/image/node/18.19.0/include/**"
             ],

@@ -2,6 +2,9 @@ on:
   push:
     branches:
       - main # Push events on main branch
+permissions:
+  contents: read
+  actions: write
 jobs:
   build:
     strategy:

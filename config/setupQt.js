@@ -79,7 +79,9 @@ const qtMini = {
   setupDir: SETUP_DIR,
 };
 
-const useCustomDir = Boolean(process.env.QT_INSTALL_DIR);
+const useCustomDir =
+  process.env.QT_INSTALL_DIR !== undefined &&
+  process.env.QT_INSTALL_DIR !== null;
 const qtHome = useCustomDir ? process.env.QT_INSTALL_DIR : qtMini.qtHome;
 const qtCmakeDir = path.resolve(qtHome, "lib", "cmake", "Qt6");
 

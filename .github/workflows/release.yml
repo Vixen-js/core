@@ -6,7 +6,6 @@ on:
 
 jobs:
   prepare:
-    if: contains(github.event.release.tag_name, 'latest') == false
     strategy:
       matrix:
         include:
@@ -73,7 +72,6 @@ jobs:
 
   publish-npm:
     needs: prepare
-    if: contains(github.event.release.tag_name, 'latest') == false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

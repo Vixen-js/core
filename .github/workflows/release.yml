@@ -49,7 +49,7 @@ jobs:
       
       - name: Compress Vixen Core
         if: contains(matrix.platform, 'win32')
-        uses: vixen-js/action-tar
+        uses: vixen-js/action-tar@v0.1.0
         id: compress-win
         with:
           command: compress

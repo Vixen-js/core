@@ -40,6 +40,33 @@ function getQt() {
         ],
       };
     }
+    case "win32": {
+      const qtHome = path.resolve(SETUP_DIR, QT_VERSION, "msvc2019_64");
+      return {
+        qtHome,
+        artifacts: [
+          {
+            name: "Qt Base",
+            link: `${MIRROR}/online/qtsdkrepository/windows_x86/desktop/qt6_660/qt.qt6.660.win64_msvc2019_64/6.6.0-0-202310040911qtbase-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z`,
+            skipSetup: checkIfExists(
+              path.resolve(qtHome, "bin", "Qt6Core.dll")
+            ),
+          },
+          {
+            name: "Qt Svg",
+            link: `${MIRROR}/online/qtsdkrepository/windows_x86/desktop/qt6_660/qt.qt6.660.win64_msvc2019_64/6.6.0-0-202310040911qtsvg-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z`,
+            skipSetup: checkIfExists(path.resolve(qtHome, "bin", "Qt6Svg.dll")),
+          },
+          {
+            name: "Qt Tools",
+            link: `${MIRROR}/online/qtsdkrepository/windows_x86/desktop/qt6_660/qt.qt6.660.win64_msvc2019_64/6.6.0-0-202310040911qttools-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z`,
+            skipSetup: checkIfExists(
+              path.resolve(qtHome, "bin", "windeployqt.exe")
+            ),
+          },
+        ],
+      };
+    }
     case "linux": {
       const qtHome = path.resolve(SETUP_DIR, QT_VERSION, "gcc_64");
       return {

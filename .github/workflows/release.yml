@@ -37,9 +37,8 @@ jobs:
           version: 9
       
       - name: Install ubuntu deps
-        if: matrix.os == 'ubuntu-20.04'
-        run: |
-          sudo apt install -y mesa-common-dev libglu1-mesa-dev libegl1 libopengl-dev
+        if: contains(matrix.platform, 'linux')
+        run: sudo apt install mesa-common-dev libglu1-mesa-dev libegl1 libopengl-dev
       
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -68,8 +67,7 @@ jobs:
           path: ${{ env.FILENAME }}
       
       - name: Upload release binaries
-        run: |
-          gh release upload ${{github.event.release.tag_name}} ${{ env.FILENAME }}
+        run: gh release upload "${{github.event.release.tag_name}}" ${{ env.FILENAME }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
@@ -89,7 +87,6 @@ jobs:
           version: 9
 
       - name: Install ubuntu deps
-        if: matrix.os == 'ubuntu-20.04'
         run: |
           sudo apt update
           sudo apt install -y mesa-common-dev libglu1-mesa-dev

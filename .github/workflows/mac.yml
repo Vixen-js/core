@@ -6,6 +6,7 @@ on:
 
 jobs:
   prepare:
+    permissions: write-all
     strategy:
       matrix:
         include:
@@ -81,7 +82,7 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
           echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' >> .npmrc
-          pnpm publish
+          pnpm publish --no-git-checks
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           CMAKE_BUILD_PARALLEL_LEVEL: 8

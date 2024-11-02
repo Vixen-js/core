@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.1)
 
 include(./config/base.cmake)
-include(./config/qt_setup.cmake)
+include(./config/qt.cmake)
 include(./config/node_api.cmake)
 include(./config/qode.cmake)
 

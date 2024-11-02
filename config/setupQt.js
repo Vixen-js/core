@@ -83,6 +83,9 @@ const useCustomDir =
   process.env.QT_INSTALL_DIR !== undefined &&
   process.env.QT_INSTALL_DIR !== null;
 const qtHome = useCustomDir ? process.env.QT_INSTALL_DIR : qtMini.qtHome;
+
+console.log(`Using QT installation directory: ${qtHome}`);
+
 const qtCmakeDir = path.resolve(qtHome, "lib", "cmake", "Qt6");
 
 module.exports = { qtHome, qtMini, qtCmakeDir, useCustomDir };

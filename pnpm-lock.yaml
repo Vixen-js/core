@@ -12,8 +12,8 @@ dependencies:
     specifier: ^2.2.2
     version: 2.2.2
   '@vixen-js/pkg-installer':
-    specifier: ^0.2.1
-    version: 0.2.1
+    specifier: ^0.3.0
+    version: 0.3.0
   '@vixen-js/postqcss-autoprefixer':
     specifier: ^0.2.0
     version: 0.2.0
@@ -220,8 +220,8 @@ packages:
       '@types/yargs-parser': 21.0.3
     dev: true
 
-  /@vixen-js/pkg-installer@0.2.1:
-    resolution: {integrity: sha512-1lT6LtIzg2SlTPY4uYHF9EmOK+SrOeIJnXGKkUVMsmOiXPEYPQMKYD10ngY/ffFXC2RM8jBOqXtnQp4tVRiSZA==}
+  /@vixen-js/pkg-installer@0.3.0:
+    resolution: {integrity: sha512-WSJ8Royb5fNV+4AkWdULdcfBs3OYF/Z1Qu5Yi5Kp+l2EIY4FIxJkqy6eig2z29JqdqJkpWsl8mAocZV5lm74Ow==}
     engines: {node: '>=18.9.0'}
     dependencies:
       7zip-min: 1.4.5

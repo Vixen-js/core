@@ -45,7 +45,7 @@
   "dependencies": {
     "@nodegui/qode": "^18.12.1",
     "@paralleldrive/cuid2": "^2.2.2",
-    "@vixen-js/pkg-installer": "^0.2.1",
+    "@vixen-js/pkg-installer": "^0.3.0",
     "@vixen-js/postqcss-autoprefixer": "^0.2.0",
     "bindings": "^1.5.0",
     "cmake-js": "^7.3.0",

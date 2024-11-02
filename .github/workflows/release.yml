@@ -1,0 +1,105 @@
+name: Build and Release in npm
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  prepare:
+    if: contains(github.event.release.tag_name, 'latest') == false
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-20.04
+            platform: linux
+            arch: x64
+          - os: windows-latest
+            platform: win32
+            arch: x64
+          - os: macos-latest
+            platform: darwin
+            arch: x64
+          - os: macos-latest
+            platform: darwin
+            arch: arm64
+    runs-on: ${{ matrix.os }}
+    env:
+      FILENAME: vixen-bin-${{github.event.release.tag_name}}-${{ matrix.platform }}-${{ matrix.arch }}.tar.gz
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.14.0'
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      
+      - name: Install ubuntu deps
+        if: matrix.os == 'ubuntu-20.04'
+        run: |
+          sudo apt install -y mesa-common-dev libglu1-mesa-dev libegl1 libopengl-dev
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Vixen Core
+        run: pnpm build
+        env:
+          CMAKE_BUILD_PARALLEL_LEVEL: 8
+      
+      - name: Compress Vixen Core
+        if: contains(matrix.platform, 'win32')
+        uses: vixen-js/action-tar
+        id: compress-win
+        with:
+          command: compress
+          cwd: ./build/Release
+          files: |
+            ./vixen_core.node
+            ./vixen_core.lib
+            ./vixen_core.exp
+          outPath: ${{ env.FILENAME }}
+      
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.FILENAME }}
+          path: ${{ env.FILENAME }}
+      
+      - name: Upload release binaries
+        run: |
+          gh release upload ${{github.event.release.tag_name}} ${{ env.FILENAME }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+  publish-npm:
+    needs: prepare
+    if: contains(github.event.release.tag_name, 'latest') == false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.14.0'
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install ubuntu deps
+        if: matrix.os == 'ubuntu-20.04'
+        run: |
+          sudo apt update
+          sudo apt install -y mesa-common-dev libglu1-mesa-dev
+      
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile
+          echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' >> .npmrc
+          pnpm publish
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          CMAKE_BUILD_PARALLEL_LEVEL: 8
+        

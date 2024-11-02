@@ -47,19 +47,19 @@ function getQt() {
         artifacts: [
           {
             name: "Qt Base",
-            link: `${MIRROR}/online/qtsdkrepository/windows_x86/desktop/qt6_660/qt.qt6.660.win64_msvc2019_64/6.6.0-0-202310040911qtbase-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z`,
+            link: `${MIRROR_URL}/online/qtsdkrepository/windows_x86/desktop/qt6_660/qt.qt6.660.win64_msvc2019_64/6.6.0-0-202310040911qtbase-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z`,
             skipSetup: checkIfExists(
               path.resolve(qtHome, "bin", "Qt6Core.dll")
             ),
           },
           {
             name: "Qt Svg",
-            link: `${MIRROR}/online/qtsdkrepository/windows_x86/desktop/qt6_660/qt.qt6.660.win64_msvc2019_64/6.6.0-0-202310040911qtsvg-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z`,
+            link: `${MIRROR_URL}/online/qtsdkrepository/windows_x86/desktop/qt6_660/qt.qt6.660.win64_msvc2019_64/6.6.0-0-202310040911qtsvg-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z`,
             skipSetup: checkIfExists(path.resolve(qtHome, "bin", "Qt6Svg.dll")),
           },
           {
             name: "Qt Tools",
-            link: `${MIRROR}/online/qtsdkrepository/windows_x86/desktop/qt6_660/qt.qt6.660.win64_msvc2019_64/6.6.0-0-202310040911qttools-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z`,
+            link: `${MIRROR_URL}/online/qtsdkrepository/windows_x86/desktop/qt6_660/qt.qt6.660.win64_msvc2019_64/6.6.0-0-202310040911qttools-Windows-Windows_10_22H2-MSVC2019-Windows-Windows_10_22H2-X86_64.7z`,
             skipSetup: checkIfExists(
               path.resolve(qtHome, "bin", "windeployqt.exe")
             ),
@@ -110,8 +110,6 @@ const useCustomDir =
   process.env.QT_INSTALL_DIR !== undefined &&
   process.env.QT_INSTALL_DIR !== null;
 const qtHome = useCustomDir ? process.env.QT_INSTALL_DIR : qtMini.qtHome;
-
-console.log(`Using QT installation directory: ${qtHome}`);
 
 const qtCmakeDir = path.resolve(qtHome, "lib", "cmake", "Qt6");
 

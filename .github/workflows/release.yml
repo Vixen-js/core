@@ -37,7 +37,10 @@ jobs:
 
       - name: Install ubuntu deps
         if: contains(matrix.platform, 'linux')
-        run: sudo apt install mesa-common-dev libglu1-mesa-dev libegl1 libopengl-dev qt6-base-dev
+        run: |
+          sudo add-apt-repository ppa:okirby/qt6-backports
+          sudo apt update
+          sudo apt install mesa-common-dev libglu1-mesa-dev libegl1 libopengl-dev qt6-base-dev
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile

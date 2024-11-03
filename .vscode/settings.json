@@ -5,7 +5,16 @@
         "qapplication": "cpp",
         "initializer_list": "cpp",
         "new": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "vector": "cpp",
+        "*.tcc": "cpp"
     },
     "C_Cpp.intelliSenseCacheSize": 0,
 }

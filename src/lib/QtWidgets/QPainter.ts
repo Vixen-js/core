@@ -33,7 +33,7 @@ const layout = new FlexLayout();
 center.setLayout(layout);
 win.resize(200, 200);
 
-win.addEventListener(WidgetEventTypes.Paint, () => {
+win.addEventListener(WidgetEventTypes.onPaint, () => {
     const painter = new QPainter(win);
     painter.drawText(20, 20, 'Hello');
     painter.end();

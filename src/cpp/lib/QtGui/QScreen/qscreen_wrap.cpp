@@ -48,7 +48,7 @@ void QScreenWrap::connectSignalsToEventEmitter()
         Napi::HandleScope scope(env);
         auto instance = QRectWrap::constructor.New({Napi::External<QRect>::New(
             env, new QRect(geometry.x(), geometry.y(), geometry.width(), geometry.height()))});
-        this->emitOnNode.Call({Napi::String::New(env, "availableGeometryChanged"), instance});
+        this->emitOnNode.Call({Napi::String::New(env, "onAvailableGeometryChange"), instance});
     });
 
     QObject::connect(this->instance.data(), &QScreen::geometryChanged, [=](const QRect &geometry) {
@@ -56,47 +56,47 @@ void QScreenWrap::connectSignalsToEventEmitter()
         Napi::HandleScope scope(env);
         auto instance = QRectWrap::constructor.New({Napi::External<QRect>::New(
             env, new QRect(geometry.x(), geometry.y(), geometry.width(), geometry.height()))});
-        this->emitOnNode.Call({Napi::String::New(env, "geometryChanged"), instance});
+        this->emitOnNode.Call({Napi::String::New(env, "onGeometryChange"), instance});
     });
 
     QObject::connect(this->instance.data(), &QScreen::logicalDotsPerInchChanged, [=](qreal dpi) {
         Napi::Env env = this->emitOnNode.Env();
         Napi::HandleScope scope(env);
-        this->emitOnNode.Call({Napi::String::New(env, "logicalDotsPerInchChanged"), Napi::Value::From(env, dpi)});
+        this->emitOnNode.Call({Napi::String::New(env, "onLogicalDotsPerInchChange"), Napi::Value::From(env, dpi)});
     });
 
     QObject::connect(this->instance.data(), &QScreen::orientationChanged, [=](Qt::ScreenOrientation orientation) {
         Napi::Env env = this->emitOnNode.Env();
         Napi::HandleScope scope(env);
         this->emitOnNode.Call(
-            {Napi::String::New(env, "orientationChanged"), Napi::Value::From(env, static_cast<int>(orientation))});
+            {Napi::String::New(env, "onOrientationChange"), Napi::Value::From(env, static_cast<int>(orientation))});
     });
 
     QObject::connect(this->instance.data(), &QScreen::physicalDotsPerInchChanged, [=](qreal dpi) {
         Napi::Env env = this->emitOnNode.Env();
         Napi::HandleScope scope(env);
-        this->emitOnNode.Call({Napi::String::New(env, "physicalDotsPerInchChanged"), Napi::Value::From(env, dpi)});
+        this->emitOnNode.Call({Napi::String::New(env, "onPhysicalDotsPerInchChange"), Napi::Value::From(env, dpi)});
     });
 
     QObject::connect(this->instance.data(), &QScreen::physicalSizeChanged, [=](const QSizeF &size) {
         Napi::Env env = this->emitOnNode.Env();
         Napi::HandleScope scope(env);
         auto instance = QSizeFWrap::constructor.New({Napi::External<QSizeF>::New(env, new QSizeF(size))});
-        this->emitOnNode.Call({Napi::String::New(env, "physicalSizeChanged"), instance});
+        this->emitOnNode.Call({Napi::String::New(env, "onPhysicalSizeChange"), instance});
     });
 
     QObject::connect(this->instance.data(), &QScreen::primaryOrientationChanged,
                      [=](Qt::ScreenOrientation orientation) {
                          Napi::Env env = this->emitOnNode.Env();
                          Napi::HandleScope scope(env);
-                         this->emitOnNode.Call({Napi::String::New(env, "primaryOrientationChanged"),
+                         this->emitOnNode.Call({Napi::String::New(env, "onPrimaryOrientationChange"),
                                                 Napi::Value::From(env, static_cast<int>(orientation))});
                      });
 
     QObject::connect(this->instance.data(), &QScreen::refreshRateChanged, [=](qreal refreshRate) {
         Napi::Env env = this->emitOnNode.Env();
         Napi::HandleScope scope(env);
-        this->emitOnNode.Call({Napi::String::New(env, "refreshRateChanged"), Napi::Value::From(env, refreshRate)});
+        this->emitOnNode.Call({Napi::String::New(env, "onRefreshRateChange"), Napi::Value::From(env, refreshRate)});
     });
 
     QObject::connect(this->instance.data(), &QScreen::virtualGeometryChanged, [=](const QRect &rect) {
@@ -104,7 +104,7 @@ void QScreenWrap::connectSignalsToEventEmitter()
         Napi::HandleScope scope(env);
         auto instance = QRectWrap::constructor.New(
             {Napi::External<QRect>::New(env, new QRect(rect.x(), rect.y(), rect.width(), rect.height()))});
-        this->emitOnNode.Call({Napi::String::New(env, "virtualGeometryChanged"), instance});
+        this->emitOnNode.Call({Napi::String::New(env, "onVirtualGeometryChange"), instance});
     });
 }
 

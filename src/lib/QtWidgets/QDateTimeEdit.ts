@@ -97,7 +97,7 @@ export class QDateTimeEdit extends QAbstractSpinBox<QDateTimeEditSignals> {
 wrapperCache.registerWrapper("QDateTimeEditWrap", QDateTimeEdit);
 
 export interface QDateTimeEditSignals extends QAbstractSpinBoxSignals {
-  dateChanged: (date: QDate) => void;
-  dateTimeChanged: (datetime: QDateTime) => void;
-  timeChanged: (time: QTime) => void;
+  onDateChange: (date: QDate) => void;
+  onDateTimeChange: (datetime: QDateTime) => void;
+  onTimeChange: (time: QTime) => void;
 }

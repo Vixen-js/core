@@ -311,7 +311,7 @@
         auto indexInstance = QModelIndexWrap::constructor.New(                 \
             {Napi::External<QModelIndex>::New(env, new QModelIndex(index))});  \
         this->emitOnNode.Call(                                                 \
-            {Napi::String::New(env, "activated"), indexInstance});             \
+            {Napi::String::New(env, "onActivate"), indexInstance});             \
       });                                                                      \
   QObject::connect(                                                            \
       this, &QAbstractItemView::clicked, [=](const QModelIndex& index) {       \
@@ -320,7 +320,7 @@
         auto indexInstance = QModelIndexWrap::constructor.New(                 \
             {Napi::External<QModelIndex>::New(env, new QModelIndex(index))});  \
         this->emitOnNode.Call(                                                 \
-            {Napi::String::New(env, "clicked"), indexInstance});               \
+            {Napi::String::New(env, "onClick"), indexInstance});               \
       });                                                                      \
   QObject::connect(                                                            \
       this, &QAbstractItemView::doubleClicked, [=](const QModelIndex& index) { \
@@ -329,7 +329,7 @@
         auto indexInstance = QModelIndexWrap::constructor.New(                 \
             {Napi::External<QModelIndex>::New(env, new QModelIndex(index))});  \
         this->emitOnNode.Call(                                                 \
-            {Napi::String::New(env, "doubleClicked"), indexInstance});         \
+            {Napi::String::New(env, "onDblClick"), indexInstance});         \
       });                                                                      \
   QObject::connect(                                                            \
       this, &QAbstractItemView::entered, [=](const QModelIndex& index) {       \
@@ -338,7 +338,7 @@
         auto indexInstance = QModelIndexWrap::constructor.New(                 \
             {Napi::External<QModelIndex>::New(env, new QModelIndex(index))});  \
         this->emitOnNode.Call(                                                 \
-            {Napi::String::New(env, "entered"), indexInstance});               \
+            {Napi::String::New(env, "onEnter"), indexInstance});               \
       });                                                                      \
   QObject::connect(                                                            \
       this, &QAbstractItemView::iconSizeChanged, [=](const QSize& size) {      \
@@ -347,7 +347,7 @@
         auto sizeInstance = QSizeWrap::constructor.New(                        \
             {Napi::External<QSize>::New(env, new QSize(size))});               \
         this->emitOnNode.Call(                                                 \
-            {Napi::String::New(env, "iconSizeChanged"), sizeInstance});        \
+            {Napi::String::New(env, "onIconSizeChange"), sizeInstance});        \
       });                                                                      \
   QObject::connect(                                                            \
       this, &QAbstractItemView::pressed, [=](const QModelIndex& index) {       \
@@ -356,12 +356,12 @@
         auto indexInstance = QModelIndexWrap::constructor.New(                 \
             {Napi::External<QModelIndex>::New(env, new QModelIndex(index))});  \
         this->emitOnNode.Call(                                                 \
-            {Napi::String::New(env, "pressed"), indexInstance});               \
+            {Napi::String::New(env, "onPress"), indexInstance});               \
       });                                                                      \
   QObject::connect(this, &QAbstractItemView::viewportEntered, [=]() {          \
     Napi::Env env = this->emitOnNode.Env();                                    \
     Napi::HandleScope scope(env);                                              \
-    this->emitOnNode.Call({Napi::String::New(env, "viewportEntered")});        \
+    this->emitOnNode.Call({Napi::String::New(env, "onViewportEnter")});        \
   });
 
 #endif  // QABSTRACTITEMVIEW_SIGNALS

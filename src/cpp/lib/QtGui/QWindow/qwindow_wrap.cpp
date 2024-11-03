@@ -64,19 +64,19 @@ void QWindowWrap::connectSignalsToEventEmitter()
         Napi::Env env = this->emitOnNode.Env();
         Napi::HandleScope scope(env);
         auto instance = WrapperCache::instance.getWrapper(env, screen, true);
-        this->emitOnNode.Call({Napi::String::New(env, "screenChanged"), instance});
+        this->emitOnNode.Call({Napi::String::New(env, "onScreenChange"), instance});
     });
 
     QObject::connect(this->instance.data(), &QWindow::visibilityChanged, [=](QWindow::Visibility visibility) {
         Napi::Env env = this->emitOnNode.Env();
         Napi::HandleScope scope(env);
-        this->emitOnNode.Call({Napi::String::New(env, "visibilityChanged"), Napi::Number::New(env, visibility)});
+        this->emitOnNode.Call({Napi::String::New(env, "onVisibilityChange"), Napi::Number::New(env, visibility)});
     });
 
     QObject::connect(this->instance.data(), &QWindow::windowStateChanged, [=](Qt::WindowState windowState) {
         Napi::Env env = this->emitOnNode.Env();
         Napi::HandleScope scope(env);
-        this->emitOnNode.Call({Napi::String::New(env, "windowStateChanged"), Napi::Number::New(env, windowState)});
+        this->emitOnNode.Call({Napi::String::New(env, "onWindowStateChange"), Napi::Number::New(env, windowState)});
     });
 
     this->instance->installEventFilter(this);

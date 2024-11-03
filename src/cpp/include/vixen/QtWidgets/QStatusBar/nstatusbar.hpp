@@ -6,26 +6,26 @@
 #include "core/NodeWidget/nodewidget.h"
 #include "napi.h"
 
-class DLL_EXPORT NStatusBar : public QStatusBar, public NodeWidget {
-  Q_OBJECT
+class DLL_EXPORT NStatusBar : public QStatusBar, public NodeWidget
+{
+    Q_OBJECT
 
- public:
-  NODEWIDGET_IMPLEMENTATIONS(QStatusBar)
-  using QStatusBar::QStatusBar;  // inherit all constructors of QStatusBar
+  public:
+    NODEWIDGET_IMPLEMENTATIONS(QStatusBar)
+    using QStatusBar::QStatusBar; // inherit all constructors of QStatusBar
 
-  virtual void connectSignalsToEventEmitter() {
-    QObject::connect(
-        this, &QStatusBar::messageChanged, [=](const QString &message) {
-          Napi::Env env = this->emitOnNode.Env();
-          Napi::HandleScope scope(env);
+    virtual void connectSignalsToEventEmitter()
+    {
+        QObject::connect(this, &QStatusBar::messageChanged, [=](const QString &message) {
+            Napi::Env env = this->emitOnNode.Env();
+            Napi::HandleScope scope(env);
 
-          auto newMessage = message.toStdString();
-          auto newMessageWrap = Napi::Value::From(env, newMessage);
+            auto newMessage = message.toStdString();
+            auto newMessageWrap = Napi::Value::From(env, newMessage);
 
-          this->emitOnNode.Call(
-              {Napi::String::New(env, "messageChanged"), newMessageWrap});
+            this->emitOnNode.Call({Napi::String::New(env, "onMessageChange"), newMessageWrap});
         });
 
-    QWIDGET_SIGNALS
-  }
+        QWIDGET_SIGNALS
+    }
 };

@@ -89,5 +89,5 @@ export class QStackedWidget extends QFrame<QStackedWidgetSignals> {
 wrapperCache.registerWrapper("QStackedWidgetWrap", QStackedWidget);
 
 export interface QStackedWidgetSignals extends QFrameSignals {
-  currentChanged: (index: number) => void;
+  onCurrentChange: (index: number) => void;
 }

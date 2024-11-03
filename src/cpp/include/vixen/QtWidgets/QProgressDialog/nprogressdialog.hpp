@@ -7,19 +7,21 @@
 #include "core/NodeWidget/nodewidget.h"
 #include "napi.h"
 
-class DLL_EXPORT NProgressDialog : public QProgressDialog, public NodeWidget {
-  Q_OBJECT
-  NODEWIDGET_IMPLEMENTATIONS(QProgressDialog)
- public:
-  using QProgressDialog::QProgressDialog;
+class DLL_EXPORT NProgressDialog : public QProgressDialog, public NodeWidget
+{
+    Q_OBJECT
+    NODEWIDGET_IMPLEMENTATIONS(QProgressDialog)
+  public:
+    using QProgressDialog::QProgressDialog;
 
-  virtual void connectSignalsToEventEmitter() {
-    QDIALOG_SIGNALS
-    // Qt Connects: Implement all signal connects here
-    QObject::connect(this, &QProgressDialog::canceled, [=]() {
-      Napi::Env env = this->emitOnNode.Env();
-      Napi::HandleScope scope(env);
-      this->emitOnNode.Call({Napi::String::New(env, "canceled")});
-    });
-  }
+    virtual void connectSignalsToEventEmitter()
+    {
+        QDIALOG_SIGNALS
+        // Qt Connects: Implement all signal connects here
+        QObject::connect(this, &QProgressDialog::canceled, [=]() {
+            Napi::Env env = this->emitOnNode.Env();
+            Napi::HandleScope scope(env);
+            this->emitOnNode.Call({Napi::String::New(env, "onCancel")});
+        });
+    }
 };

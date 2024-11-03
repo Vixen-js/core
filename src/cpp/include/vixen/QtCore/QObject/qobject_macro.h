@@ -177,7 +177,7 @@
                      Napi::Env env = this->emitOnNode.Env();                  \
                      Napi::HandleScope scope(env);                            \
                      this->emitOnNode.Call(                                   \
-                         {Napi::String::New(env, "objectNameChanged"),        \
+                         {Napi::String::New(env, "onChangeId"),        \
                           Napi::Value::From(env, objectName.toStdString())}); \
                    });
 #endif  // QOBJECT_SIGNALS_ON_TARGET

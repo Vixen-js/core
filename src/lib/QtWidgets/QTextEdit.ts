@@ -260,10 +260,10 @@ export enum WrapMode {
 }
 
 export interface QTextEditSignals extends QAbstractScrollAreaSignals {
-  copyAvailable: (yes: boolean) => void;
-  cursorPositionChanged: () => void;
-  redoAvailable: (available: boolean) => void;
-  selectionChanged: () => void;
-  textChanged: () => void;
-  undoAvailable: (available: boolean) => void;
+  onCopyAvailable: (yes: boolean) => void;
+  onCursorPositionChange: () => void;
+  onRedoAvailable: (available: boolean) => void;
+  onSelectionChange: () => void;
+  onTextChange: () => void;
+  onUndoAvailable: (available: boolean) => void;
 }

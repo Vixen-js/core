@@ -109,5 +109,5 @@ export enum QProgressBarDirection {
 }
 
 export interface QProgressBarSignals extends QWidgetSignals {
-  valueChanged: (value: number) => void;
+  onValueChange: (value: number) => void;
 }

@@ -100,5 +100,5 @@ export enum SegmentStyle {
 }
 
 export interface QLCDNumberSignals extends QWidgetSignals {
-  overflow: () => void;
+  onOverflow: () => void;
 }

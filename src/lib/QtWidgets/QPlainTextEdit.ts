@@ -10,14 +10,14 @@ import { wrapperCache } from "../core/WrapperCache";
 import { checkIfNativeElement } from "../utils/helpers";
 
 export interface QPlainTextEditSignals extends QAbstractScrollAreaSignals {
-  textChanged: () => void;
-  blockCountChanged: (blockCount: number) => void;
-  copyAvailable: (yes: boolean) => void;
-  cursorPositionChanged: () => void;
-  modificationChanged: (changed: boolean) => void;
-  redoAvailable: (available: boolean) => void;
-  selectionChanged: () => void;
-  undoAvailable: (available: boolean) => void;
+  onTextChange: () => void;
+  onBlockCountChange: (blockCount: number) => void;
+  onCopyAvailable: (yes: boolean) => void;
+  onCursorPositionChange: () => void;
+  onModificationChange: (changed: boolean) => void;
+  onRedoAvailable: (available: boolean) => void;
+  onSelectionChange: () => void;
+  onUndoAvailable: (available: boolean) => void;
 }
 
 /**

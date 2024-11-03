@@ -96,5 +96,5 @@ export class QProgressDialog extends QDialog<QProgressDialogSignals> {
 wrapperCache.registerWrapper("QProgressDialogWrap", QProgressDialog);
 
 export interface QProgressDialogSignals extends QDialogSignals {
-  canceled: () => void;
+  onCancel: () => void;
 }

@@ -92,10 +92,10 @@ export class QTextBrowser extends QTextEdit<QTextBrowserSignals> {
 wrapperCache.registerWrapper("QTextBrowserWrap", QTextBrowser);
 
 export interface QTextBrowserSignals extends QTextEditSignals {
-  anchorClicked: (link: QUrl) => void;
-  backwardAvailable: (available: boolean) => void;
-  forwardAvailable: (available: boolean) => void;
-  highlighted: (link: string) => void;
-  historyChanged: () => void;
-  sourceChanged: (src: QUrl) => void;
+  onAnchorClick: (link: QUrl) => void;
+  onBackwardAvailable: (available: boolean) => void;
+  onForwardAvailable: (available: boolean) => void;
+  onHighlight: (link: string) => void;
+  onHistoryChange: () => void;
+  onSourceChange: (src: QUrl) => void;
 }

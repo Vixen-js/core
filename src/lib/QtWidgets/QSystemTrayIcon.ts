@@ -86,6 +86,6 @@ export enum QSystemTrayIconActivationReason {
 }
 
 export interface QSystemTrayIconSignals extends QObjectSignals {
-  activated: (reason: QSystemTrayIconActivationReason) => void;
-  messageClicked: () => void;
+  onActivate: (reason: QSystemTrayIconActivationReason) => void;
+  onMessageClick: () => void;
 }

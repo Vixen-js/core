@@ -133,8 +133,8 @@ export class QTabWidget extends QWidget<QTabWidgetSignals> {
 wrapperCache.registerWrapper("QTabWidgetWrap", QTabWidget);
 
 export interface QTabWidgetSignals extends QWidgetSignals {
-  currentChanged: (index: number) => void;
-  tabBarClicked: (index: number) => void;
-  tabBarDoubleClicked: (index: number) => void;
-  tabCloseRequested: (index: number) => void;
+  onCurrentChange: (index: number) => void;
+  onTabBarClick: (index: number) => void;
+  onTabBarDblClick: (index: number) => void;
+  onTabCloseRequest: (index: number) => void;
 }

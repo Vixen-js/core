@@ -87,8 +87,8 @@ export enum ColorDialogOption {
 }
 
 export interface QColorDialogSignals extends QDialogSignals {
-  colorSelected: (color: QColor) => void;
-  currentColorChanged: (color: QColor) => void;
+  onColorSelect: (color: QColor) => void;
+  onCurrentColorChange: (color: QColor) => void;
 }
 
 wrapperCache.registerWrapper("QColorDialogWrap", QColorDialog);

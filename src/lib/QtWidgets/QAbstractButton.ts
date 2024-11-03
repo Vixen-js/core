@@ -96,8 +96,8 @@ export abstract class QAbstractButton<
   }
 }
 export interface QAbstractButtonSignals extends QWidgetSignals {
-  clicked: (checked: boolean) => void;
-  pressed: () => void;
-  released: () => void;
-  toggled: (checked: boolean) => void;
+  onClick: (checked: boolean) => void;
+  onMousedown: () => void;
+  onMouseup: () => void;
+  onToggle: (checked: boolean) => void;
 }

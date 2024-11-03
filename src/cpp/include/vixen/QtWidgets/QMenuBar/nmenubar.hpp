@@ -18,14 +18,14 @@ class DLL_EXPORT NMenuBar : public QMenuBar, public NodeWidget {
       Napi::Env env = this->emitOnNode.Env();
       Napi::HandleScope scope(env);
       auto instance = WrapperCache::instance.getWrapper(env, action);
-      this->emitOnNode.Call({Napi::String::New(env, "hovered"), instance});
+      this->emitOnNode.Call({Napi::String::New(env, "onHover"), instance});
     });
 
     QObject::connect(this, &QMenuBar::triggered, [=](QAction* action) {
       Napi::Env env = this->emitOnNode.Env();
       Napi::HandleScope scope(env);
       auto instance = WrapperCache::instance.getWrapper(env, action);
-      this->emitOnNode.Call({Napi::String::New(env, "triggered"), instance});
+      this->emitOnNode.Call({Napi::String::New(env, "onTrigger"), instance});
     });
   }
 };

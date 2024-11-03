@@ -19,27 +19,27 @@ class DLL_EXPORT NMenu : public QMenu, public NodeWidget
         QObject::connect(this, &QMenu::aboutToHide, [=]() {
             Napi::Env env = this->emitOnNode.Env();
             Napi::HandleScope scope(env);
-            this->emitOnNode.Call({Napi::String::New(env, "aboutToHide")});
+            this->emitOnNode.Call({Napi::String::New(env, "onAboutToHide")});
         });
 
         QObject::connect(this, &QMenu::aboutToShow, [=]() {
             Napi::Env env = this->emitOnNode.Env();
             Napi::HandleScope scope(env);
-            this->emitOnNode.Call({Napi::String::New(env, "aboutToShow")});
+            this->emitOnNode.Call({Napi::String::New(env, "onAboutToShow")});
         });
 
         QObject::connect(this, &QMenu::hovered, [=](QAction *action) {
             Napi::Env env = this->emitOnNode.Env();
             Napi::HandleScope scope(env);
             auto instance = WrapperCache::instance.getWrapper(env, action);
-            this->emitOnNode.Call({Napi::String::New(env, "hovered"), instance});
+            this->emitOnNode.Call({Napi::String::New(env, "onHover"), instance});
         });
 
         QObject::connect(this, &QMenu::triggered, [=](QAction *action) {
             Napi::Env env = this->emitOnNode.Env();
             Napi::HandleScope scope(env);
             auto instance = WrapperCache::instance.getWrapper(env, action);
-            this->emitOnNode.Call({Napi::String::New(env, "triggered"), instance});
+            this->emitOnNode.Call({Napi::String::New(env, "onTrigger"), instance});
         });
     }
 };

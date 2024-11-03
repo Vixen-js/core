@@ -111,13 +111,13 @@ export class QFileDialog extends QDialog<QFileDialogSignals> {
 wrapperCache.registerWrapper("QFileDialogWrap", QFileDialog);
 
 export interface QFileDialogSignals extends QDialogSignals {
-  currentChanged: (path: string) => void;
-  currentUrlChanged: (url: string) => void;
-  directoryEntered: (directory: string) => void;
-  directoryUrlEntered: (url: string) => void;
-  fileSelected: (file: string) => void;
-  filesSelected: (selected: string[]) => void;
-  filterSelected: (filter: string) => void;
-  urlSelected: (url: string) => void;
-  urlsSelected: (urls: string[]) => void;
+  onCurrentChange: (path: string) => void;
+  onCurrentUrlChange: (url: string) => void;
+  onDirectoryEnter: (directory: string) => void;
+  onDirectoryUrlEnter: (url: string) => void;
+  onFileSelect: (file: string) => void;
+  onFilesSelect: (selected: string[]) => void;
+  onFilterSelect: (filter: string) => void;
+  onUrlSelect: (url: string) => void;
+  onUrlsSelect: (urls: string[]) => void;
 }

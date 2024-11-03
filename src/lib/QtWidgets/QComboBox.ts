@@ -29,11 +29,11 @@ comboBox.addItem(undefined, 'comboBox item 1');
 comboBox.addItem(undefined, 'comboBox item 2');
 comboBox.addItem(undefined, 'comboBox item 3');
 
-comboBox.addEventListener('currentTextChanged', (text) => {
+comboBox.addEventListener('onCurrentTextChange', (text) => {
     console.log('currentTextChanged: ' + text);
 });
 
-comboBox.addEventListener('currentIndexChanged', (index) => {
+comboBox.addEventListener('onCurrentIndexChange', (index) => {
     console.log('currentIndexChanged: ' + index);
 });
 ```
@@ -227,13 +227,13 @@ export enum InsertPolicy {
 }
 
 export interface QComboBoxSignals extends QWidgetSignals {
-  activated: (index: number) => void;
-  currentIndexChanged: (index: number) => void;
-  currentTextChanged: (text: string) => void;
-  editTextChanged: (text: string) => void;
-  highlighted: (index: number) => void;
-  textActivated: (text: string) => void;
-  textHighlighted: (text: string) => void;
+  onActivate: (index: number) => void;
+  onCurrentIndexChange: (index: number) => void;
+  onCurrentTextChange: (text: string) => void;
+  onEditTextChange: (text: string) => void;
+  onHighlight: (index: number) => void;
+  onTextActivate: (text: string) => void;
+  onTextHighlight: (text: string) => void;
 }
 
 wrapperCache.registerWrapper("QComboBoxWrap", QComboBox);

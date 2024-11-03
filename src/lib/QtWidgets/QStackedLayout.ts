@@ -52,14 +52,14 @@ stackedLayout.addWidget(page3)
 const combobox = new QComboBox()
 combobox.addItems(["Page 1", "Page 2", "Page 3"])
 
-combobox.addEventListener("currentIndexChanged", (index) => stackedLayout.setCurrentIndex(index));
+combobox.addEventListener("onCurrentIndexChange", (index) => stackedLayout.setCurrentIndex(index));
 
 rootLayout.addWidget(combobox);
 
 const currentIndexLabel = new QLabel()
 currentIndexLabel.setText(`Current Index: ${stackedLayout.currentIndex()}`)
 
-stackedLayout.addEventListener("currentChanged", (index) => {
+stackedLayout.addEventListener("onCurrentChange", (index) => {
   currentIndexLabel.setText(`Current Index: ${index}`)
 });
 
@@ -123,6 +123,6 @@ export class QStackedLayout extends QLayout<QStackedLayoutSignals> {
 wrapperCache.registerWrapper("QStackedLayoutWrap", QStackedLayout);
 
 export interface QStackedLayoutSignals extends QLayoutSignals {
-  currentChanged: (index: number) => void;
-  widgetRemoved: (index: number) => void;
+  onCurrentChange: (index: number) => void;
+  onWidgetRemove: (index: number) => void;
 }

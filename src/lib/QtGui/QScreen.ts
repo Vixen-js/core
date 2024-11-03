@@ -101,15 +101,15 @@ export class QScreen extends QObject<QScreenSignals> {
 wrapperCache.registerWrapper("QScreenWrap", QScreen);
 
 export interface QScreenSignals extends QObjectSignals {
-  availableGeometryChanged: (geometry: QRect) => void;
-  geometryChanged: (geometry: QRect) => void;
-  logicalDotsPerInchChanged: (dpi: number) => void;
-  orientationChanged: (orientation: ScreenOrientation) => void;
-  physicalDotsPerInchChanged: (dpi: number) => void;
-  physicalSizeChanged: (size: QSizeF) => void;
-  primaryOrientationChanged: (orientation: ScreenOrientation) => void;
-  refreshRateChanged: (refreshRate: number) => void;
-  virtualGeometryChanged: (rect: QRect) => void;
+  onAvailableGeometryChange: (geometry: QRect) => void;
+  onGeometryChange: (geometry: QRect) => void;
+  onLogicalDotsPerInchChange: (dpi: number) => void;
+  onOrientationChange: (orientation: ScreenOrientation) => void;
+  onPhysicalDotsPerInchChange: (dpi: number) => void;
+  onPhysicalSizeChange: (size: QSizeF) => void;
+  onPrimaryOrientationChange: (orientation: ScreenOrientation) => void;
+  onRefreshRateChange: (refreshRate: number) => void;
+  onVirtualGeometryChange: (rect: QRect) => void;
 }
 
 registerNativeWrapFunction("QScreenWrap", (native: any) => {

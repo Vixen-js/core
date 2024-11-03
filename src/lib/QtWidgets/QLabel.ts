@@ -153,6 +153,6 @@ export class QLabel extends QFrame<QLabelSignals> {
 wrapperCache.registerWrapper("QLabelWrap", QLabel);
 
 export interface QLabelSignals extends QFrameSignals {
-  linkActivated: (link: string) => void;
-  linkHovered: (link: string) => void;
+  onLinkActivate: (link: string) => void;
+  onLinkHover: (link: string) => void;
 }

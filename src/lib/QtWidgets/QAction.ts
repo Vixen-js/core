@@ -24,7 +24,7 @@ import { QAction, QMenu } from "@vixen-js/core";
 const menu = new QMenu();
 const menuAction = new QAction();
 menuAction.setText("subAction");
-menuAction.addEventListener("triggered", () => {
+menuAction.addEventListener("onTrigger", () => {
   console.log("Action clicked");
 });
 menu.addAction(menuAction);
@@ -98,9 +98,9 @@ export class QAction extends QObject<QActionSignals> {
 wrapperCache.registerWrapper("QActionWrap", QAction);
 
 export interface QActionSignals extends QObjectSignals {
-  triggered: (checked: boolean) => void;
-  changed: () => void;
-  hovered: () => void;
-  toggled: (checked: boolean) => void;
+  onTrigger: (checked: boolean) => void;
+  onChange: () => void;
+  onHover: () => void;
+  onToggle: (checked: boolean) => void;
 }
 wrapperCache.registerWrapper("QActionWrap", QAction);

@@ -105,8 +105,8 @@ export enum SelectionMode {
 }
 
 export interface QCalendarWidgetSignals extends QWidgetSignals {
-  activated: (date: QDate) => void;
-  clicked: (date: QDate) => void;
-  currentPageChanged: (year: number, month: number) => void;
-  selectionChanged: () => void;
+  onActivate: (date: QDate) => void;
+  onClick: (date: QDate) => void;
+  onCurrentPageChange: (year: number, month: number) => void;
+  onSelectionChange: () => void;
 }

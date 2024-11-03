@@ -6,7 +6,7 @@ import { NativeElement } from "../core/Component";
 import { checkIfNativeElement } from "../utils/helpers";
 
 export interface QStandardItemModelSignals extends QObjectSignals {
-  itemChanged: (item: QStandardItem) => void;
+  onItemChange: (item: QStandardItem) => void;
 }
 
 export class QStandardItemModel extends QObject {

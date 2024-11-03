@@ -17,24 +17,24 @@ class DLL_EXPORT NAction : public QAction, public EventWidget {
     QObject::connect(this, &QAction::triggered, [=](bool checked) {
       Napi::Env env = this->emitOnNode.Env();
       Napi::HandleScope scope(env);
-      this->emitOnNode.Call({Napi::String::New(env, "triggered"),
+      this->emitOnNode.Call({Napi::String::New(env, "onTrigger"),
                              Napi::Value::From(env, checked)});
     });
     QObject::connect(this, &QAction::changed, [=]() {
       Napi::Env env = this->emitOnNode.Env();
       Napi::HandleScope scope(env);
-      this->emitOnNode.Call({Napi::String::New(env, "changed")});
+      this->emitOnNode.Call({Napi::String::New(env, "onChange")});
     });
     QObject::connect(this, &QAction::hovered, [=]() {
       Napi::Env env = this->emitOnNode.Env();
       Napi::HandleScope scope(env);
-      this->emitOnNode.Call({Napi::String::New(env, "hovered")});
+      this->emitOnNode.Call({Napi::String::New(env, "onHover")});
     });
     QObject::connect(this, &QAction::toggled, [=](bool checked) {
       Napi::Env env = this->emitOnNode.Env();
       Napi::HandleScope scope(env);
       this->emitOnNode.Call(
-          {Napi::String::New(env, "toggled"), Napi::Value::From(env, checked)});
+          {Napi::String::New(env, "onToggle"), Napi::Value::From(env, checked)});
     });
   }
 };

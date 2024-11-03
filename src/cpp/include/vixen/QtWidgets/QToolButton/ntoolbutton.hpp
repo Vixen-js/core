@@ -22,7 +22,7 @@ class DLL_EXPORT NToolButton : public QToolButton, public NodeWidget {
       Napi::Env env = this->emitOnNode.Env();
       Napi::HandleScope scope(env);
       auto instance = WrapperCache::instance.getWrapper(env, action);
-      this->emitOnNode.Call({Napi::String::New(env, "triggered"), instance});
+      this->emitOnNode.Call({Napi::String::New(env, "onTrigger"), instance});
     });
   }
 };

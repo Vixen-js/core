@@ -7,56 +7,49 @@
 #include "QtWidgets/QTextEdit/qtextedit_macro.h"
 #include "core/NodeWidget/nodewidget.h"
 
-class DLL_EXPORT NTextBrowser : public QTextBrowser, public NodeWidget {
-  Q_OBJECT
-  NODEWIDGET_IMPLEMENTATIONS(QTextBrowser)
- public:
-  using QTextBrowser::QTextBrowser;  // inherit all constructors of QTextBrowser
+class DLL_EXPORT NTextBrowser : public QTextBrowser, public NodeWidget
+{
+    Q_OBJECT
+    NODEWIDGET_IMPLEMENTATIONS(QTextBrowser)
+  public:
+    using QTextBrowser::QTextBrowser; // inherit all constructors of QTextBrowser
 
-  virtual void connectSignalsToEventEmitter() {
-    QTEXTEDIT_SIGNALS
-    // Qt Connects: Implement all signal connects here
-    QObject::connect(this, &QTextBrowser::anchorClicked, [=](const QUrl& link) {
-      Napi::Env env = this->emitOnNode.Env();
-      Napi::HandleScope scope(env);
-      auto instance = QUrlWrap::constructor.New(
-          {Napi::External<QUrl>::New(env, new QUrl(link))});
-      this->emitOnNode.Call(
-          {Napi::String::New(env, "anchorClicked"), instance});
-    });
-    QObject::connect(
-        this, &QTextBrowser::backwardAvailable, [=](bool available) {
-          Napi::Env env = this->emitOnNode.Env();
-          Napi::HandleScope scope(env);
-          this->emitOnNode.Call({Napi::String::New(env, "backwardAvailable"),
-                                 Napi::Boolean::New(env, available)});
+    virtual void connectSignalsToEventEmitter()
+    {
+        QTEXTEDIT_SIGNALS
+        // Qt Connects: Implement all signal connects here
+        QObject::connect(this, &QTextBrowser::anchorClicked, [=](const QUrl &link) {
+            Napi::Env env = this->emitOnNode.Env();
+            Napi::HandleScope scope(env);
+            auto instance = QUrlWrap::constructor.New({Napi::External<QUrl>::New(env, new QUrl(link))});
+            this->emitOnNode.Call({Napi::String::New(env, "onAnchorClick"), instance});
         });
-    QObject::connect(
-        this, &QTextBrowser::forwardAvailable, [=](bool available) {
-          Napi::Env env = this->emitOnNode.Env();
-          Napi::HandleScope scope(env);
-          this->emitOnNode.Call({Napi::String::New(env, "forwardAvailable"),
-                                 Napi::Boolean::New(env, available)});
+        QObject::connect(this, &QTextBrowser::backwardAvailable, [=](bool available) {
+            Napi::Env env = this->emitOnNode.Env();
+            Napi::HandleScope scope(env);
+            this->emitOnNode.Call({Napi::String::New(env, "onBackwardAvailable"), Napi::Boolean::New(env, available)});
         });
-    QObject::connect(this, &QTextBrowser::highlighted, [=](const QUrl& link) {
-      Napi::Env env = this->emitOnNode.Env();
-      Napi::HandleScope scope(env);
-      this->emitOnNode.Call(
-          {Napi::String::New(env, "highlighted"),
-           Napi::String::New(env, link.toString().toStdString())});
-    });
-    QObject::connect(this, &QTextBrowser::historyChanged, [=]() {
-      Napi::Env env = this->emitOnNode.Env();
-      Napi::HandleScope scope(env);
-      this->emitOnNode.Call({Napi::String::New(env, "historyChanged")});
-    });
-    QObject::connect(this, &QTextBrowser::sourceChanged, [=](const QUrl& src) {
-      Napi::Env env = this->emitOnNode.Env();
-      Napi::HandleScope scope(env);
-      auto instance = QUrlWrap::constructor.New(
-          {Napi::External<QUrl>::New(env, new QUrl(src))});
-      this->emitOnNode.Call(
-          {Napi::String::New(env, "sourceChanged"), instance});
-    });
-  }
+        QObject::connect(this, &QTextBrowser::forwardAvailable, [=](bool available) {
+            Napi::Env env = this->emitOnNode.Env();
+            Napi::HandleScope scope(env);
+            this->emitOnNode.Call({Napi::String::New(env, "onForwardAvailable"), Napi::Boolean::New(env, available)});
+        });
+        QObject::connect(this, &QTextBrowser::highlighted, [=](const QUrl &link) {
+            Napi::Env env = this->emitOnNode.Env();
+            Napi::HandleScope scope(env);
+            this->emitOnNode.Call(
+                {Napi::String::New(env, "onHighlight"), Napi::String::New(env, link.toString().toStdString())});
+        });
+        QObject::connect(this, &QTextBrowser::historyChanged, [=]() {
+            Napi::Env env = this->emitOnNode.Env();
+            Napi::HandleScope scope(env);
+            this->emitOnNode.Call({Napi::String::New(env, "onHistoryChange")});
+        });
+        QObject::connect(this, &QTextBrowser::sourceChanged, [=](const QUrl &src) {
+            Napi::Env env = this->emitOnNode.Env();
+            Napi::HandleScope scope(env);
+            auto instance = QUrlWrap::constructor.New({Napi::External<QUrl>::New(env, new QUrl(src))});
+            this->emitOnNode.Call({Napi::String::New(env, "onSourceChange"), instance});
+        });
+    }
 };

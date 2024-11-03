@@ -75,9 +75,9 @@ export class QWindow extends QObject<QWindowSignals> {
 wrapperCache.registerWrapper("QWindowWrap", QWindow);
 
 export interface QWindowSignals extends QObjectSignals {
-  screenChanged: (screen: QScreen) => void;
-  visibilityChanged: (visibility: Visibility) => void;
-  windowStateChanged: (windowState: WindowState) => void;
+  onScreenChange: (screen: QScreen) => void;
+  onVisibilityChange: (visibility: Visibility) => void;
+  onWindowStateChange: (windowState: WindowState) => void;
 }
 
 registerNativeWrapFunction("QWindowWrap", (native: any) => {

@@ -89,6 +89,6 @@ export class QGroupBox extends QWidget<QGroupBoxSignals> {
 wrapperCache.registerWrapper("QGroupBoxWrap", QGroupBox);
 
 export interface QGroupBoxSignals extends QWidgetSignals {
-  clicked: (checked: boolean) => void;
-  toggled: (on: boolean) => void;
+  onClick: (checked: boolean) => void;
+  onToggle: (on: boolean) => void;
 }

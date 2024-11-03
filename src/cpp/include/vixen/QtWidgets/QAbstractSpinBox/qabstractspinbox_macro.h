@@ -11,42 +11,44 @@
  */
 
 #ifndef QABSTRACTSPINBOX_WRAPPED_METHODS_DECLARATION
-#define QABSTRACTSPINBOX_WRAPPED_METHODS_DECLARATION      \
-  QWIDGET_WRAPPED_METHODS_DECLARATION                     \
-  Napi::Value selectAll(const Napi::CallbackInfo& info) { \
-    Napi::Env env = info.Env();                           \
-    this->instance->selectAll();                          \
-    return env.Null();                                    \
-  }                                                       \
-  Napi::Value stepDown(const Napi::CallbackInfo& info) {  \
-    Napi::Env env = info.Env();                           \
-    this->instance->stepDown();                           \
-    return env.Null();                                    \
-  }                                                       \
-  Napi::Value stepUp(const Napi::CallbackInfo& info) {    \
-    Napi::Env env = info.Env();                           \
-    this->instance->stepUp();                             \
-    return env.Null();                                    \
-  }
+#define QABSTRACTSPINBOX_WRAPPED_METHODS_DECLARATION                                                                   \
+    QWIDGET_WRAPPED_METHODS_DECLARATION                                                                                \
+    Napi::Value selectAll(const Napi::CallbackInfo &info)                                                              \
+    {                                                                                                                  \
+        Napi::Env env = info.Env();                                                                                    \
+        this->instance->selectAll();                                                                                   \
+        return env.Null();                                                                                             \
+    }                                                                                                                  \
+    Napi::Value stepDown(const Napi::CallbackInfo &info)                                                               \
+    {                                                                                                                  \
+        Napi::Env env = info.Env();                                                                                    \
+        this->instance->stepDown();                                                                                    \
+        return env.Null();                                                                                             \
+    }                                                                                                                  \
+    Napi::Value stepUp(const Napi::CallbackInfo &info)                                                                 \
+    {                                                                                                                  \
+        Napi::Env env = info.Env();                                                                                    \
+        this->instance->stepUp();                                                                                      \
+        return env.Null();                                                                                             \
+    }
 
-#endif  // QABSTRACTSPINBOX_WRAPPED_METHODS_DECLARATION
+#endif // QABSTRACTSPINBOX_WRAPPED_METHODS_DECLARATION
 
 #ifndef QABSTRACTSPINBOX_WRAPPED_METHODS_EXPORT_DEFINE
-#define QABSTRACTSPINBOX_WRAPPED_METHODS_EXPORT_DEFINE(WidgetWrapName) \
-  QWIDGET_WRAPPED_METHODS_EXPORT_DEFINE(WidgetWrapName)                \
-  InstanceMethod("selectAll", &WidgetWrapName::selectAll),             \
-      InstanceMethod("stepDown", &WidgetWrapName::stepDown),           \
-      InstanceMethod("stepUp", &WidgetWrapName::stepUp),
+#define QABSTRACTSPINBOX_WRAPPED_METHODS_EXPORT_DEFINE(WidgetWrapName)                                                 \
+    QWIDGET_WRAPPED_METHODS_EXPORT_DEFINE(WidgetWrapName)                                                              \
+    InstanceMethod("selectAll", &WidgetWrapName::selectAll), InstanceMethod("stepDown", &WidgetWrapName::stepDown),    \
+        InstanceMethod("stepUp", &WidgetWrapName::stepUp),
 
-#endif  // QABSTRACTSPINBOX_WRAPPED_METHODS_EXPORT_DEFINE
+#endif // QABSTRACTSPINBOX_WRAPPED_METHODS_EXPORT_DEFINE
 
 #ifndef QABSTRACTSPINBOX_SIGNALS
-#define QABSTRACTSPINBOX_SIGNALS                                        \
-  QWIDGET_SIGNALS                                                       \
-  QObject::connect(this, &QAbstractSpinBox::editingFinished, [=]() {    \
-    Napi::Env env = this->emitOnNode.Env();                             \
-    Napi::HandleScope scope(env);                                       \
-    this->emitOnNode.Call({Napi::String::New(env, "editingFinished")}); \
-  });
+#define QABSTRACTSPINBOX_SIGNALS                                                                                       \
+    QWIDGET_SIGNALS                                                                                                    \
+    QObject::connect(this, &QAbstractSpinBox::editingFinished, [=]() {                                                 \
+        Napi::Env env = this->emitOnNode.Env();                                                                        \
+        Napi::HandleScope scope(env);                                                                                  \
+        this->emitOnNode.Call({Napi::String::New(env, "onEditingFinish")});                                            \
+    });
 
-#endif  // QABSTRACTSPINBOX_SIGNALS
+#endif // QABSTRACTSPINBOX_SIGNALS

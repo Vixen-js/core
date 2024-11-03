@@ -18,13 +18,13 @@ class DLL_EXPORT NGroupBox : public QGroupBox, public NodeWidget {
       Napi::Env env = this->emitOnNode.Env();
       Napi::HandleScope scope(env);
       this->emitOnNode.Call(
-          {Napi::String::New(env, "clicked"), Napi::Value::From(env, checked)});
+          {Napi::String::New(env, "onClick"), Napi::Value::From(env, checked)});
     });
     QObject::connect(this, &QGroupBox::toggled, [=](bool on) {
       Napi::Env env = this->emitOnNode.Env();
       Napi::HandleScope scope(env);
       this->emitOnNode.Call(
-          {Napi::String::New(env, "toggled"), Napi::Value::From(env, on)});
+          {Napi::String::New(env, "onToggle"), Napi::Value::From(env, on)});
     });
   }
 };

@@ -18,7 +18,7 @@ class DLL_EXPORT NDrag : public QDrag, public EventWidget {
       Napi::Env env = this->emitOnNode.Env();
       Napi::HandleScope scope(env);
       this->emitOnNode.Call(
-          {Napi::String::New(env, "actionChanged"),
+          {Napi::String::New(env, "onActionChange"),
            Napi::Number::From(env, static_cast<int>(action))});
     });
   }

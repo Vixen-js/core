@@ -17,7 +17,7 @@ class DLL_EXPORT NLCDNumber : public QLCDNumber, public NodeWidget {
     QObject::connect(this, &QLCDNumber::overflow, [=]() {
       Napi::Env env = this->emitOnNode.Env();
       Napi::HandleScope scope(env);
-      this->emitOnNode.Call({Napi::String::New(env, "overflow")});
+      this->emitOnNode.Call({Napi::String::New(env, "onOverflow")});
     });
   }
 };

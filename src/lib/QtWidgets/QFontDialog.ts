@@ -73,6 +73,6 @@ export enum FontDialogOption {
 }
 
 export interface QFontDialogSignals extends QDialogSignals {
-  fontSelected: (font: QFont) => void;
-  currentFontChanged: (font: QFont) => void;
+  onFontSelect: (font: QFont) => void;
+  onCurrentFontChange: (font: QFont) => void;
 }

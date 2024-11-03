@@ -35,7 +35,7 @@ describe("QToolButton", () => {
   it("check if signals are working", () => {
     const widget = new QToolButton();
     const mock = jest.fn();
-    widget.addEventListener("objectNameChanged", mock);
+    widget.addEventListener("onChangeId", mock);
     widget.setObjectName("testName");
     expect(mock).toBeCalledWith("testName");
     expect(mock).toBeCalledTimes(1);
@@ -43,7 +43,7 @@ describe("QToolButton", () => {
   it("check if signals are working from QWidget", () => {
     const widget = new QToolButton();
     const mock = jest.fn();
-    widget.addEventListener("windowTitleChanged", mock);
+    widget.addEventListener("onWindowTitleChange", mock);
     widget.setWindowTitle("testName");
     expect(mock).toBeCalledWith("testName");
     expect(mock).toBeCalledTimes(1);

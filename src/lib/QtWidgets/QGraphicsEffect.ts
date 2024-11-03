@@ -1,4 +1,4 @@
-import { QObject, QObjectSignals } from '../QtCore/QObject';
+import { QObject, QObjectSignals } from "../QtCore/QObject";
 
 /**
 
@@ -10,15 +10,17 @@ The QGraphicsEffect class is an abstract class and therefore, technically, no fu
 It is inherited by QGraphicsBlurEffect, QGraphicsColorizeEffect, QGraphicsDropShadowEffect, and QGraphicsOpacityEffect.
 
  */
-export abstract class QGraphicsEffect<Signals extends QGraphicsEffectSignals> extends QObject<Signals> {
-    setEnabled(enable: boolean): void {
-        this.setProperty('enabled', enable);
-    }
-    isEnabled(): boolean {
-        return this.property('enabled').toBool();
-    }
+export abstract class QGraphicsEffect<
+  Signals extends QGraphicsEffectSignals
+> extends QObject<Signals> {
+  setEnabled(enable: boolean): void {
+    this.setProperty("enabled", enable);
+  }
+  isEnabled(): boolean {
+    return this.property("enabled").toBool();
+  }
 }
 
 export interface QGraphicsEffectSignals extends QObjectSignals {
-    enabledChanged: (enabled: boolean) => void;
+  onEnabledChange: (enabled: boolean) => void;
 }

@@ -102,7 +102,7 @@ export class QMessageBox extends QDialog<QMessageBoxSignals> {
 wrapperCache.registerWrapper("QMessageBoxWrap", QMessageBox);
 
 export interface QMessageBoxSignals extends QDialogSignals {
-  buttonClicked: (
+  onButtonClick: (
     buttonRawPointer: NativeRawPointer<"QAbstractButton*">
   ) => void;
 }

@@ -160,17 +160,17 @@ export class QListWidget extends QListView<QListWidgetSignals> {
 wrapperCache.registerWrapper("QListWidgetWrap", QListWidget);
 
 export interface QListWidgetSignals extends QListViewSignals {
-  currentItemChanged: (
+  onCurrentItemChange: (
     current: QListWidgetItem,
     previous: QListWidgetItem
   ) => void;
-  currentRowChanged: (currentRow: number) => void;
-  currentTextChanged: (currentText: string) => void;
-  itemActivated: (item: QListWidgetItem) => void;
-  itemChanged: (item: QListWidgetItem) => void;
-  itemClicked: (item: QListWidgetItem) => void;
-  itemDoubleClicked: (item: QListWidgetItem) => void;
-  itemEntered: (item: QListWidgetItem) => void;
-  itemPressed: (item: QListWidgetItem) => void;
-  itemSelectionChanged: () => void;
+  onCurrentRowChange: (currentRow: number) => void;
+  onCurrentTextChange: (currentText: string) => void;
+  onItemActivate: (item: QListWidgetItem) => void;
+  onItemChange: (item: QListWidgetItem) => void;
+  onItemClick: (item: QListWidgetItem) => void;
+  onItemDblClick: (item: QListWidgetItem) => void;
+  onItemEnter: (item: QListWidgetItem) => void;
+  onItemPress: (item: QListWidgetItem) => void;
+  onItemSelectionChange: () => void;
 }

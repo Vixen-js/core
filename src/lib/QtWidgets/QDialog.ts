@@ -64,7 +64,7 @@ export class QDialog<
 wrapperCache.registerWrapper("QDialogWrap", QDialog);
 
 export interface QDialogSignals extends QWidgetSignals {
-  accepted: () => void;
-  finished: (result: number) => void;
-  rejected: () => void;
+  onAccept: () => void;
+  onFinish: (result: number) => void;
+  onReject: () => void;
 }

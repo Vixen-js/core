@@ -34,7 +34,7 @@ import { QWidget, QWidgetSignals, WidgetEventTypes } from "@vixen-js/core";
 
 const view = new QWidget();
 // You either listen for a widget's signal
-view.addEventListener('windowTitleChanged', () => {
+view.addEventListener('onWindowTitleChange', () => {
   console.log("window title changed");
 });
 
@@ -153,8 +153,8 @@ export abstract class EventWidget<Signals extends unknown> extends Component {
     For example in the case of QPushButton:
     ```js
     const button = new QPushButton();
-    button.addEventListener('clicked',(checked)=>console.log("clicked"));
-    // here clicked is a value from QPushButtonSignals interface
+    button.addEventListener('onClick',(checked)=>console.log("clicked"));
+    // here onCLick is a value from QPushButtonSignals interface
     ```
      */
   addEventListener<SignalType extends keyof Signals>(

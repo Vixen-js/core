@@ -53,5 +53,5 @@ export class QCheckBox extends QAbstractButton<QCheckBoxSignals> {
 wrapperCache.registerWrapper("QCheckBoxWrap", QCheckBox);
 
 export interface QCheckBoxSignals extends QAbstractButtonSignals {
-  stateChanged: (state: number) => void;
+  onStateChange: (state: number) => void;
 }

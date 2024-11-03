@@ -22,7 +22,7 @@ class DLL_EXPORT NMessageBox : public QMessageBox, public NodeWidget {
           Napi::HandleScope scope(env);
           auto value = Napi::External<QAbstractButton>::New(env, button);
           this->emitOnNode.Call(
-              {Napi::String::New(env, "buttonClicked"), value});
+              {Napi::String::New(env, "onClick"), value});
         });
   }
 };

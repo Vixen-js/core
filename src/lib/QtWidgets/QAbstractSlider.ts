@@ -103,10 +103,10 @@ export enum SliderAction {
 }
 
 export interface QAbstractSliderSignals extends QWidgetSignals {
-  actionTriggered: (action: number) => void;
-  rangeChanged: (min: number, max: number) => void;
-  sliderMoved: (value: number) => void;
-  sliderPressed: () => void;
-  sliderReleased: () => void;
-  valueChanged: (value: number) => void;
+  onActionTrigger: (action: number) => void;
+  onRangeChange: (min: number, max: number) => void;
+  onSliderMove: (value: number) => void;
+  onSliderPress: () => void;
+  onSliderRelease: () => void;
+  onValueChange: (value: number) => void;
 }

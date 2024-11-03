@@ -48,23 +48,23 @@
     Napi::Env env = this->emitOnNode.Env();                                    \
     Napi::HandleScope scope(env);                                              \
     this->emitOnNode.Call(                                                     \
-        {Napi::String::New(env, "clicked"), Napi::Value::From(env, checked)}); \
+        {Napi::String::New(env, "onClick"), Napi::Value::From(env, checked)}); \
   });                                                                          \
   QObject::connect(this, &QAbstractButton::pressed, [=]() {                    \
     Napi::Env env = this->emitOnNode.Env();                                    \
     Napi::HandleScope scope(env);                                              \
-    this->emitOnNode.Call({Napi::String::New(env, "pressed")});                \
+    this->emitOnNode.Call({Napi::String::New(env, "onMousedown")});                \
   });                                                                          \
   QObject::connect(this, &QAbstractButton::released, [=]() {                   \
     Napi::Env env = this->emitOnNode.Env();                                    \
     Napi::HandleScope scope(env);                                              \
-    this->emitOnNode.Call({Napi::String::New(env, "released")});               \
+    this->emitOnNode.Call({Napi::String::New(env, "onMouseup")});               \
   });                                                                          \
   QObject::connect(this, &QAbstractButton::toggled, [=](bool checked) {        \
     Napi::Env env = this->emitOnNode.Env();                                    \
     Napi::HandleScope scope(env);                                              \
     this->emitOnNode.Call(                                                     \
-        {Napi::String::New(env, "toggled"), Napi::Value::From(env, checked)}); \
+        {Napi::String::New(env, "onToggle"), Napi::Value::From(env, checked)}); \
   });
 
 #endif

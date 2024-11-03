@@ -38,7 +38,7 @@ stackedLayout.addWidget(createPage("This is page 3"));
 // Create combo box to switch pages
 const combobox = new QComboBox();
 combobox.addItems(["Page 1", "Page 2", "Page 3"]);
-combobox.addEventListener("currentIndexChanged", (index) =>
+combobox.addEventListener("onCurrentIndexChange", (index) =>
   stackedLayout.setCurrentIndex(index)
 );
 
@@ -49,7 +49,7 @@ rootLayout.addLayout(stackedLayout);
 // Create and update label for current index
 const currentIndexLabel = new QLabel();
 currentIndexLabel.setText(`Current Index: ${stackedLayout.currentIndex()}`);
-stackedLayout.addEventListener("currentChanged", (index) => {
+stackedLayout.addEventListener("onCurrentChange", (index) => {
   currentIndexLabel.setText(`Current Index: ${index}`);
 });
 rootLayout.addWidget(currentIndexLabel);

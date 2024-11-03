@@ -97,11 +97,11 @@ export enum ImageReaderError {
 type SupportedFormats = "gif" | "webp";
 
 export interface QMovieSignals extends QObjectSignals {
-  error: (error: ImageReaderError) => void;
-  finished: () => void;
-  frameChanged: (frameNumber?: number) => void;
-  resized: (qSizeNative?: NativeElement) => void;
-  started: () => void;
-  stateChanged: (state: MovieState) => void;
-  updated: (qRectNative: NativeElement) => void;
+  onError: (error: ImageReaderError) => void;
+  onFinish: () => void;
+  onFrameChange: (frameNumber?: number) => void;
+  onResize: (qSizeNative?: NativeElement) => void;
+  onStart: () => void;
+  onStateChange: (state: MovieState) => void;
+  onUpdate: (qRectNative: NativeElement) => void;
 }

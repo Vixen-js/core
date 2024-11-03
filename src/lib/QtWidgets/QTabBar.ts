@@ -234,9 +234,9 @@ export enum TabBarShape {
 }
 
 export interface QTabBarSignals extends QWidgetSignals {
-  currentChanged: (index: number) => void;
-  tabBarClicked: (index: number) => void;
-  tabBarDoubleClicked: (index: number) => void;
-  tabCloseRequested: (index: number) => void;
-  tabMoved: (from: number, to: number) => void;
+  onCurrentChange: (index: number) => void;
+  onTabBarClick: (index: number) => void;
+  onTabBarDblClick: (index: number) => void;
+  onTabCloseRequest: (index: number) => void;
+  onTabMove: (from: number, to: number) => void;
 }

@@ -96,5 +96,5 @@ export class QSpinBox extends QAbstractSpinBox<QSpinBoxSignals> {
 wrapperCache.registerWrapper("QSpinBoxWrap", QSpinBox);
 
 export interface QSpinBoxSignals extends QAbstractSpinBoxSignals {
-  valueChanged: (value: number) => void;
+  onValueChange: (value: number) => void;
 }

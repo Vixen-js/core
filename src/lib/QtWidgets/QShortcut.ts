@@ -22,7 +22,7 @@ const win = new QMainWindow();
 const shortcut = new QShortcut(win);
 shortcut.setKey(new QKeySequence("Ctrl+M"));
 shortcut.setEnabled(true);
-shortcut.addEventListener(QShortcutEvents.activated, () => {
+shortcut.addEventListener(QShortcutEvents.onActivate, () => {
   console.log("Shortcut Activated");
 });
 
@@ -60,6 +60,6 @@ export class QShortcut extends QObject<QShortcutSignals> {
 wrapperCache.registerWrapper("QShortcutWrap", QShortcut);
 
 export interface QShortcutSignals extends QObjectSignals {
-  activated: () => void;
-  activatedAmbiguously: () => void;
+  onActivate: () => void;
+  onActivatedAmbiguously: () => void;
 }

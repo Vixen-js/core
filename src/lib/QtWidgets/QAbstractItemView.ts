@@ -312,11 +312,11 @@ export enum SelectionMode {
 }
 
 export interface QAbstractItemViewSignals extends QAbstractScrollAreaSignals {
-  activated: (index: NativeElement /* QModelIndex */) => void;
-  clicked: (index: NativeElement /* QModelIndex */) => void;
-  doubleClicked: (index: NativeElement /* QModelIndex */) => void;
-  entered: (index: NativeElement /* QModelIndex */) => void;
-  iconSizeChanged: (size: NativeElement /* QSize */) => void;
-  pressed: (index: NativeElement /* QModelIndex */) => void;
-  viewportEntered: () => void;
+  onActivate: (index: NativeElement /* QModelIndex */) => void;
+  onClick: (index: NativeElement /* QModelIndex */) => void;
+  onDblClick: (index: NativeElement /* QModelIndex */) => void;
+  onEnter: (index: NativeElement /* QModelIndex */) => void;
+  onIconSizeChange: (size: NativeElement /* QSize */) => void;
+  onPress: (index: NativeElement /* QModelIndex */) => void;
+  onViewportEnter: () => void;
 }

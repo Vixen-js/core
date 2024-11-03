@@ -173,10 +173,10 @@ export class QApplication extends QObject<QApplicationSignals> {
 wrapperCache.registerWrapper("QApplicationWrap", QApplication);
 
 export interface QApplicationSignals extends QObjectSignals {
-  applicationDisplayNameChanged: () => void;
-  focusWindowChanged: () => void;
-  lastWindowClosed: () => void;
-  primaryScreenChanged: (screen: QScreen) => void;
-  screenAdded: (screen: QScreen) => void;
-  screenRemoved: (screen: QScreen) => void;
+  applicationDisplayNameChange: () => void;
+  focusWindowChange: () => void;
+  lastWindowClose: () => void;
+  primaryScreenChange: (screen: QScreen) => void;
+  screenAdd: (screen: QScreen) => void;
+  screenRemove: (screen: QScreen) => void;
 }

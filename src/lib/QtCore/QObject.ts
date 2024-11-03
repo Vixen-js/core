@@ -92,5 +92,5 @@ export class QObject<
 wrapperCache.registerWrapper("QObjectWrap", QObject);
 
 export interface QObjectSignals {
-  objectNameChanged: (objectName: string) => void;
+  onChangeId: (objectName: string) => void;
 }

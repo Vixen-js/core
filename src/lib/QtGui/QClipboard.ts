@@ -70,10 +70,10 @@ export enum QClipboardMode {
 }
 
 export interface QClipboardSignals extends QObjectSignals {
-  changed: (mode: QClipboardMode) => void;
-  dataChanged: () => void;
-  findBufferChanged: () => void;
-  selectionChanged: () => void;
+  onChange: (mode: QClipboardMode) => void;
+  onDataChange: () => void;
+  onFindBufferChange: () => void;
+  onSelectionChange: () => void;
 }
 
 registerNativeWrapFunction("QClipboardWrap", (native: any) => {

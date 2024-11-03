@@ -108,5 +108,5 @@ export enum StepType {
 }
 
 export interface QAbstractSpinBoxSignals extends QWidgetSignals {
-  editingFinished: () => void;
+  onEditingFinish: () => void;
 }

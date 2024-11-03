@@ -198,17 +198,17 @@ export class QTreeWidget extends QAbstractScrollArea<QTreeWidgetSignals> {
 wrapperCache.registerWrapper("QTreeWidgetWrap", QTreeWidget);
 
 export interface QTreeWidgetSignals extends QAbstractScrollAreaSignals {
-  itemSelectionChanged: () => void;
-  itemClicked: (item: QTreeWidgetItem, column: number) => void;
-  itemChanged: (item: QTreeWidgetItem, column: number) => void;
-  currentItemChanged: (
+  onItemSelectionChange: () => void;
+  onItemClick: (item: QTreeWidgetItem, column: number) => void;
+  onItemChange: (item: QTreeWidgetItem, column: number) => void;
+  onCurrentItemChange: (
     current: QTreeWidgetItem,
     previous: QTreeWidgetItem
   ) => void;
-  itemActivated: (item: QTreeWidgetItem | null, column: number) => void;
-  itemCollapsed: (item: QTreeWidgetItem) => void;
-  itemDoubleClicked: (item: QTreeWidgetItem | null, column: number) => void;
-  itemEntered: (item: QTreeWidgetItem, column: number) => void;
-  itemExpanded: (item: QTreeWidgetItem) => void;
-  itemPressed: (item: QTreeWidgetItem | null, column: number) => void;
+  onItemActivate: (item: QTreeWidgetItem | null, column: number) => void;
+  onItemCollapse: (item: QTreeWidgetItem) => void;
+  onItemDblClick: (item: QTreeWidgetItem | null, column: number) => void;
+  onItemEntere: (item: QTreeWidgetItem, column: number) => void;
+  onItemExpand: (item: QTreeWidgetItem) => void;
+  onItemPress: (item: QTreeWidgetItem | null, column: number) => void;
 }

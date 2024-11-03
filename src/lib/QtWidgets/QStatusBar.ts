@@ -5,7 +5,7 @@ import { wrapperCache } from "../core/WrapperCache";
 import { checkIfNativeElement } from "../utils/helpers";
 
 export interface QStatusBarSignals extends QWidgetSignals {
-  messageChanged: (message: string) => void;
+  onMessageChange: (message: string) => void;
 }
 
 /**

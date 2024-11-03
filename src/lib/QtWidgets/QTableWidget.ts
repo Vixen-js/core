@@ -220,13 +220,13 @@ interface Range {
 }
 
 export interface QTableWidgetSignals extends QTableViewSignals {
-  cellActivated: (row: number, col: number) => void;
-  cellChanged: (row: number, col: number) => void;
-  cellClicked: (row: number, col: number) => void;
-  cellDoubleClicked: (row: number, col: number) => void;
-  cellEntered: (row: number, col: number) => void;
-  cellPressed: (row: number, col: number) => void;
-  currentCellChanged: (
+  onCellActivate: (row: number, col: number) => void;
+  onCellChange: (row: number, col: number) => void;
+  onCellClick: (row: number, col: number) => void;
+  onCellDblClick: (row: number, col: number) => void;
+  onCellEnter: (row: number, col: number) => void;
+  onCellPress: (row: number, col: number) => void;
+  onCurrentCellChange: (
     currentRow: number,
     currentColumn: number,
     previousRow: number,

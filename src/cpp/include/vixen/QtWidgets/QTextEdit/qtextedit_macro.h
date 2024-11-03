@@ -246,34 +246,34 @@
   QObject::connect(this, &QTextEdit::copyAvailable, [=](bool yes) {           \
     Napi::Env env = this->emitOnNode.Env();                                   \
     Napi::HandleScope scope(env);                                             \
-    this->emitOnNode.Call({Napi::String::New(env, "copyAvailable"),           \
+    this->emitOnNode.Call({Napi::String::New(env, "onCopyAvailable"),           \
                            Napi::Boolean::New(env, yes)});                    \
   });                                                                         \
   QObject::connect(this, &QTextEdit::cursorPositionChanged, [=]() {           \
     Napi::Env env = this->emitOnNode.Env();                                   \
     Napi::HandleScope scope(env);                                             \
-    this->emitOnNode.Call({Napi::String::New(env, "cursorPositionChanged")}); \
+    this->emitOnNode.Call({Napi::String::New(env, "onCursorPositionChange")}); \
   });                                                                         \
   QObject::connect(this, &QTextEdit::redoAvailable, [=](bool available) {     \
     Napi::Env env = this->emitOnNode.Env();                                   \
     Napi::HandleScope scope(env);                                             \
-    this->emitOnNode.Call({Napi::String::New(env, "redoAvailable"),           \
+    this->emitOnNode.Call({Napi::String::New(env, "onRedoAvailable"),           \
                            Napi::Boolean::New(env, available)});              \
   });                                                                         \
   QObject::connect(this, &QTextEdit::selectionChanged, [=]() {                \
     Napi::Env env = this->emitOnNode.Env();                                   \
     Napi::HandleScope scope(env);                                             \
-    this->emitOnNode.Call({Napi::String::New(env, "selectionChanged")});      \
+    this->emitOnNode.Call({Napi::String::New(env, "onSelectionChange")});      \
   });                                                                         \
   QObject::connect(this, &QTextEdit::textChanged, [=]() {                     \
     Napi::Env env = this->emitOnNode.Env();                                   \
     Napi::HandleScope scope(env);                                             \
-    this->emitOnNode.Call({Napi::String::New(env, "textChanged")});           \
+    this->emitOnNode.Call({Napi::String::New(env, "onTextChange")});           \
   });                                                                         \
   QObject::connect(this, &QTextEdit::undoAvailable, [=](bool available) {     \
     Napi::Env env = this->emitOnNode.Env();                                   \
     Napi::HandleScope scope(env);                                             \
-    this->emitOnNode.Call({Napi::String::New(env, "undoAvailable"),           \
+    this->emitOnNode.Call({Napi::String::New(env, "onUndoAvailable"),           \
                            Napi::Boolean::New(env, available)});              \
   });
 

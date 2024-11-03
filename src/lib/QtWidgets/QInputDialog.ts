@@ -143,12 +143,12 @@ export class QInputDialog extends QDialog<QInputDialogSignals> {
 wrapperCache.registerWrapper("QInputDialogWrap", QInputDialog);
 
 export interface QInputDialogSignals extends QDialogSignals {
-  doubleValueChanged: (value: number) => void;
-  doubleValueSelected: (value: number) => void;
-  intValueChanged: (value: number) => void;
-  intValueSelected: (value: number) => void;
-  textValueChanged: (text: string) => void;
-  textValueSelected: (text: string) => void;
+  onDoubleValueChange: (value: number) => void;
+  onDoubleValueSelect: (value: number) => void;
+  onIntValueChange: (value: number) => void;
+  onIntValueSelect: (value: number) => void;
+  onTextValueChange: (text: string) => void;
+  onTextValueSelect: (text: string) => void;
 }
 
 export enum InputMode {

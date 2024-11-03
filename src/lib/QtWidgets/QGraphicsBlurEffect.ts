@@ -57,6 +57,6 @@ export enum BlurHint {
 }
 
 export interface QGraphicsBlurEffectSignals extends QGraphicsEffectSignals {
-  blurHintsChanged: (hints: BlurHint) => void;
-  blurRadiusChanged: (radius: number) => void;
+  onBlurHintsChange: (hints: BlurHint) => void;
+  onBlurRadiusChange: (radius: number) => void;
 }

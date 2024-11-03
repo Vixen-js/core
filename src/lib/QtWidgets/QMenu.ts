@@ -185,8 +185,8 @@ export class QMenu extends QWidget<QMenuSignals> {
 wrapperCache.registerWrapper("QMenuWrap", QMenu);
 
 export interface QMenuSignals extends QWidgetSignals {
-  aboutToHide: () => void;
-  aboutToShow: () => void;
-  hovered: (action: NativeElement) => void;
-  triggered: (action: NativeElement) => void;
+  onAboutToHide: () => void;
+  onAboutToShow: () => void;
+  onHover: (action: NativeElement) => void;
+  onTrigger: (action: NativeElement) => void;
 }

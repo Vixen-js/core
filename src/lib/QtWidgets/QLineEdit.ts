@@ -228,11 +228,11 @@ export enum EchoMode {
   PasswordEchoOnEdit,
 }
 export interface QLineEditSignals extends QWidgetSignals {
-  cursorPositionChanged: (oldPos: number, newPos: number) => void;
-  editingFinished: () => void;
-  inputRejected: () => void;
-  returnPressed: () => void;
-  selectionChanged: () => void;
-  textChanged: (text: string) => void;
-  textEdited: (text: string) => void;
+  onCursorPositionChange: (oldPos: number, newPos: number) => void;
+  onEditingFinish: () => void;
+  onInputReject: () => void;
+  onReturnPress: () => void;
+  onSelectionChange: () => void;
+  onTextChange: (text: string) => void;
+  onTextEdit: (text: string) => void;
 }

@@ -88,5 +88,5 @@ export enum ToolButtonPopupMode {
 }
 
 export interface QToolButtonSignals extends QAbstractButtonSignals {
-  triggered: (nativeAction: NativeElement) => void;
+  onTrigger: (nativeAction: NativeElement) => void;
 }

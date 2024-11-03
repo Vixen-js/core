@@ -10,37 +10,37 @@
  */
 
 #ifndef QGRAPHICSEFFECT_WRAPPED_METHODS_DECLARATION
-#define QGRAPHICSEFFECT_WRAPPED_METHODS_DECLARATION    \
-                                                       \
-  QOBJECT_WRAPPED_METHODS_DECLARATION                  \
-                                                       \
-  Napi::Value update(const Napi::CallbackInfo& info) { \
-    Napi::Env env = info.Env();                        \
-    this->instance->update();                          \
-    return env.Null();                                 \
-  }
+#define QGRAPHICSEFFECT_WRAPPED_METHODS_DECLARATION                                                                    \
+                                                                                                                       \
+    QOBJECT_WRAPPED_METHODS_DECLARATION                                                                                \
+                                                                                                                       \
+    Napi::Value update(const Napi::CallbackInfo &info)                                                                 \
+    {                                                                                                                  \
+        Napi::Env env = info.Env();                                                                                    \
+        this->instance->update();                                                                                      \
+        return env.Null();                                                                                             \
+    }
 
-#endif  // QGRAPHICSEFFECT_WRAPPED_METHODS_DECLARATION
+#endif // QGRAPHICSEFFECT_WRAPPED_METHODS_DECLARATION
 
 #ifndef QGRAPHICSEFFECT_WRAPPED_METHODS_EXPORT_DEFINE
-#define QGRAPHICSEFFECT_WRAPPED_METHODS_EXPORT_DEFINE(GraphicsEffectWrapName) \
-                                                                              \
-  QOBJECT_WRAPPED_METHODS_EXPORT_DEFINE(GraphicsEffectWrapName)               \
-                                                                              \
-  InstanceMethod("update", &GraphicsEffectWrapName::update),
+#define QGRAPHICSEFFECT_WRAPPED_METHODS_EXPORT_DEFINE(GraphicsEffectWrapName)                                          \
+                                                                                                                       \
+    QOBJECT_WRAPPED_METHODS_EXPORT_DEFINE(GraphicsEffectWrapName)                                                      \
+                                                                                                                       \
+    InstanceMethod("update", &GraphicsEffectWrapName::update),
 
-#endif  // QGRAPHICSEFFECT_WRAPPED_METHODS_EXPORT_DEFINE
+#endif // QGRAPHICSEFFECT_WRAPPED_METHODS_EXPORT_DEFINE
 
 #ifndef QGRAPHICSEFFECT_SIGNALS
-#define QGRAPHICSEFFECT_SIGNALS                                                \
-                                                                               \
-  QOBJECT_SIGNALS                                                              \
-                                                                               \
-  QObject::connect(this, &QGraphicsEffect::enabledChanged, [=](bool enabled) { \
-    Napi::Env env = this->emitOnNode.Env();                                    \
-    Napi::HandleScope scope(env);                                              \
-    this->emitOnNode.Call({Napi::String::New(env, "enabledChanged"),           \
-                           Napi::Boolean::New(env, enabled)});                 \
-  });
+#define QGRAPHICSEFFECT_SIGNALS                                                                                        \
+                                                                                                                       \
+    QOBJECT_SIGNALS                                                                                                    \
+                                                                                                                       \
+    QObject::connect(this, &QGraphicsEffect::enabledChanged, [=](bool enabled) {                                       \
+        Napi::Env env = this->emitOnNode.Env();                                                                        \
+        Napi::HandleScope scope(env);                                                                                  \
+        this->emitOnNode.Call({Napi::String::New(env, "onEnabledChange"), Napi::Boolean::New(env, enabled)});          \
+    });
 
-#endif  // QGRAPHICSEFFECT_SIGNALS
+#endif // QGRAPHICSEFFECT_SIGNALS

@@ -82,5 +82,5 @@ export class QSplitter<
 wrapperCache.registerWrapper("QSplitterWrap", QSplitter);
 
 export interface QSplitterSignals extends QFrameSignals {
-  splitterMoved: (pos: number, index: number) => void;
+  onSplitterMove: (pos: number, index: number) => void;
 }

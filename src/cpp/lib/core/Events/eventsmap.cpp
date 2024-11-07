@@ -144,6 +144,6 @@ std::unordered_map<std::string, int> EventsMap::eventTypes{
     {"onWindowStateChange", QEvent::WindowStateChange},
     {"onWindowTitleChange", QEvent::WindowTitleChange},
     {"onWindowUnblocked", QEvent::WindowUnblocked},
-    {"onWinIdChange", QEvent::WinIdChange},
+    {"onChangeId", QEvent::WinIdChange},
     {"onZOrderChange", QEvent::ZOrderChange},
 };

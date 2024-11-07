@@ -379,6 +379,6 @@ export enum WidgetEventTypes {
   "onWindowStateChange" = "onWindowStateChange",
   "onWindowTitleChange" = "onWindowTitleChange",
   "onWindowUnblocked" = "onWindowUnblocked",
-  "onWinIdChange" = "onWinIdChange",
+  "onChangeId" = "onChangeId",
   "onZOrderChange" = "onZOrderChange",
 }

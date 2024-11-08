@@ -1,4 +1,6 @@
-<img alt="Vixen Core Logo" src="./extras/assets/Logo-Color.jpg" width="200" height="200" style="margin: 0 auto;" />
+<p align="center">
+<img alt="Vixen Core Logo" src="./extras/assets/Logo-Color.jpg" width="200" height="200" />
+</p>
 
 # Vixen Core
 

@@ -11,10 +11,10 @@ Vixen Core is powered by **Qt6** that helps you build CPU and Memory efficient d
 
 ## Features
 
-1. ⛓️ **Cross platform**: Vixen Core Works on Windows, Linux and macOS.
-2. ⚡️ **Ultra Efficient**: Currently CPU takes 0% usage on Idle state and the memory usage for a basic program is under 20MB.
+1. 🖥️ **Cross platform**: Vixen Core Works on Windows, Linux and macOS.
+2. 🗄️ **Ultra Efficient**: Currently CPU takes 0% usage on Idle state and the memory usage for a basic program is under 20MB.
 3. 💅 **Styles With CSS**: Use CSS To style your UI with full suport to Flexbox layout.
-4. 🧰 **Native event listener support**: Thanks to **Qodejs** you can have all the Support for Events from Qt & Nodejs.
+4. 🤖 **Native event listener support**: Thanks to **Qodejs** you can have all the Support for Events from Qt & Nodejs.
 5. 🎖️ **Build on top of Typescript**: This project was made on Typescript, but if you like to work with JS, you can use it also.
 
 ## Getting Started

@@ -6,10 +6,17 @@ import { QBoxLayout } from "./lib/QtWidgets/QBoxLayout";
 import { Direction } from "./lib/QtEnums";
 import { QStackedLayout } from "./lib/QtWidgets/QStackedLayout";
 import { QComboBox } from "./lib/QtWidgets/QComboBox";
+import { WidgetEventTypes } from "./lib/core/EventWidget";
+import { QKeyEvent } from "./lib/QtGui/QEvent/QKeyEvent";
 
 // Create main window
 const win = new QMainWindow();
 win.setWindowTitle("QStackedLayout");
+win.addEventListener(WidgetEventTypes.OnKeyRelease, (e: any) => {
+  const event = new QKeyEvent(e);
+  event.accept();
+  console.log(event.timestamp());
+});
 
 // Create central widget and layout
 const centralWidget = new QWidget();
